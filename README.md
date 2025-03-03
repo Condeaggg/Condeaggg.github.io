@@ -153,6 +153,13 @@
             let historialMes = document.getElementById("historial-mes");
             historialMes.innerHTML = "";
             datosMeses[mes] = datosMeses[mes] || { dias: {} };
+            let diasSemana = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+            diasSemana.forEach(dia => {
+                let diaHeader = document.createElement("div");
+                diaHeader.classList.add("dia");
+                diaHeader.innerText = dia;
+                historialMes.appendChild(diaHeader);
+            });
             for (let i = 1; i <= 31; i++) {
                 let diaDiv = document.createElement("div");
                 diaDiv.classList.add("dia");
