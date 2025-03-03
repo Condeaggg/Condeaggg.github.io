@@ -15,7 +15,7 @@
             margin: 0;
         }
         #calendario {
-            width: 400px;
+            width: 450px;
             padding: 25px;
             background: white;
             border-radius: 12px;
@@ -56,13 +56,14 @@
             grid-template-columns: repeat(7, 1fr);
             gap: 8px;
             background: white;
-            padding: 15px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
         }
         .dia {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -112,6 +113,7 @@
         }
         
         function cambiarEstadoDia(mes, dia, elemento) {
+            if (!datosMeses[mes].dias) datosMeses[mes].dias = {};
             if (!datosMeses[mes].dias[dia]) {
                 datosMeses[mes].dias[dia] = 1;
                 elemento.classList.add("registrado");
@@ -155,6 +157,8 @@
                 let diaDiv = document.createElement("div");
                 diaDiv.classList.add("dia");
                 diaDiv.innerText = i;
+                if (datosMeses[mes].dias[i] === 1) diaDiv.classList.add("registrado");
+                if (datosMeses[mes].dias[i] === 2) diaDiv.classList.add("doble-click");
                 diaDiv.onclick = () => cambiarEstadoDia(mes, i, diaDiv);
                 historialMes.appendChild(diaDiv);
             }
@@ -165,3 +169,4 @@
     </script>
 </body>
 </html>
+
